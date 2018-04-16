@@ -13,7 +13,7 @@ import com.androiddesdecero.realmandroid.model.Curso;
 public class CursoActivity extends AppCompatActivity {
 
     private EditText idProfesorEt, nameEt, duractionEt;
-    private Button saveBt;
+    private Button saveBt, updateBt, deleteBt;
     private Curso curso;
 
     @Override
@@ -35,6 +35,23 @@ public class CursoActivity extends AppCompatActivity {
                 curso.setName(nameEt.getText().toString());
                 curso.setDuration(duractionEt.getText().toString());
                 CRUDCurso.addCurso(idProfesorEt.getText().toString(), curso);
+            }
+        });
+
+        updateBt = findViewById(R.id.cursoActivityBtActualizar);
+        updateBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CRUDCurso.updateCursoByName(nameEt.getText().toString());
+            }
+        });
+
+
+        deleteBt = findViewById(R.id.cursoActivityBtBorrar);
+        deleteBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CRUDCurso.deleteCursoByName(nameEt.getText().toString());
             }
         });
     }
