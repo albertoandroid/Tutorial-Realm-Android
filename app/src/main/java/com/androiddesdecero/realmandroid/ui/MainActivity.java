@@ -1,5 +1,6 @@
 package com.androiddesdecero.realmandroid.ui;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +16,7 @@ import io.realm.Realm;
 public class MainActivity extends AppCompatActivity {
 
     private EditText nombreEt, emailEt;
-    private Button saveBt, leerTodoBt, leerByName, leerById, actualizarById, borrarPorId, borrarTodo;
+    private Button saveBt, leerTodoBt, leerByName, leerById, actualizarById, borrarPorId, borrarTodo, goToCurso;
     private Profesor profesor;
     private Realm realm;
 
@@ -84,6 +85,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 CRUDProfesor.deleteAllProfesor();
+            }
+        });
+        goToCurso = findViewById(R.id.mainActivityBtCursoActivity);
+        goToCurso.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), CursoActivity.class));
             }
         });
     }

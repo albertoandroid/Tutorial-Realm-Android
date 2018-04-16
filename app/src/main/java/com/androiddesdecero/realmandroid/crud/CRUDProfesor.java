@@ -42,6 +42,9 @@ public class CRUDProfesor {
         RealmResults<Profesor> profesors = realm.where(Profesor.class).findAll();
         for(Profesor profesor: profesors){
             Log.d("TAG", "id: " + profesor.getId() + " Nombre: " + profesor.getName() + " Email: " + profesor.getEmail());
+            for(int i = 0; i <profesor.getCursos().size(); i++){
+                Log.d("TAG", "id: " + profesor.getCursos().get(i).getName());
+            }
         }
         return profesors;
     }

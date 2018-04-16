@@ -67,4 +67,10 @@
 
     </LinearLayout>
 
+    <Button
+        android:text="Go to Curso"
+        android:id="@+id/mainActivityBtCursoActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>
