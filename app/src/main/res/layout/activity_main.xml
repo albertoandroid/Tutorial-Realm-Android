@@ -43,5 +43,10 @@
             android:layout_height="wrap_content" />
 
     </LinearLayout>
+    <Button
+        android:text="Actualizar por ID"
+        android:id="@+id/mainActivityBtUpdateById"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

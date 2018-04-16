@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.androiddesdecero.realmandroid.R;
-import com.androiddesdecero.realmandroid.crud.CRUPProfesor;
+import com.androiddesdecero.realmandroid.crud.CRUDProfesor;
 import com.androiddesdecero.realmandroid.model.Profesor;
 
 import io.realm.Realm;
@@ -15,7 +15,7 @@ import io.realm.Realm;
 public class MainActivity extends AppCompatActivity {
 
     private EditText nombreEt, emailEt;
-    private Button saveBt, leerTodoBt, leerByName, leerById;
+    private Button saveBt, leerTodoBt, leerByName, leerById, actualizarById;
     private Profesor profesor;
     private Realm realm;
 
@@ -37,28 +37,35 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 profesor.setName(nombreEt.getText().toString());
                 profesor.setEmail(emailEt.getText().toString());
-                CRUPProfesor.addProfesor(profesor);
+                CRUDProfesor.addProfesor(profesor);
             }
         });
         leerTodoBt = findViewById(R.id.mainActivityBtReadAll);
         leerTodoBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CRUPProfesor.getAllProfesor();
+                CRUDProfesor.getAllProfesor();
             }
         });
         leerByName = findViewById(R.id.mainActivityBtReadByName);
         leerByName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CRUPProfesor.getProfesorByName(nombreEt.getText().toString());
+                CRUDProfesor.getProfesorByName(nombreEt.getText().toString());
             }
         });
         leerById = findViewById(R.id.mainActivityBtReadById);
         leerById.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CRUPProfesor.getProfesorById(Integer.parseInt(nombreEt.getText().toString()));
+                CRUDProfesor.getProfesorById(Integer.parseInt(nombreEt.getText().toString()));
+            }
+        });
+        actualizarById = findViewById(R.id.mainActivityBtUpdateById);
+        actualizarById.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CRUDProfesor.updateProfesorById(1);
             }
         });
     }

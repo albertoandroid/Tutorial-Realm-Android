@@ -13,7 +13,7 @@ import io.realm.RealmResults;
  * Created by albertopalomarrobledo on 16/4/18.
  */
 
-public class CRUPProfesor {
+public class CRUDProfesor {
     private final static int calculateIndex(){
         Realm realm = Realm.getDefaultInstance();
         Number currentIdNum = realm.where(Profesor.class).max("id");
@@ -30,7 +30,7 @@ public class CRUPProfesor {
         realm.executeTransaction(new Realm.Transaction(){
             @Override
             public void execute(Realm realm){
-                int index = CRUPProfesor.calculateIndex();
+                int index = CRUDProfesor.calculateIndex();
                 Profesor realmProfesor = realm.createObject(Profesor.class, index);
                 realmProfesor.setName(profesor.getName());
                 realmProfesor.setEmail(profesor.getEmail());
@@ -60,6 +60,17 @@ public class CRUPProfesor {
             Log.d("TAG", "id: " + profesor.getId() + " Nombre: " + profesor.getName() + " Email: " + profesor.getEmail());
         }
         return profesor;
+    }
+    public final static void updateProfesorById(int id){
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        Profesor profesor = realm.where(Profesor.class).equalTo("id", id).findFirst();
+        profesor.setName("alberto");
+        realm.insertOrUpdate(profesor);
+        realm.commitTransaction();
+        if(profesor != null){
+            Log.d("TAG", "id: " + profesor.getId() + " Nombre: " + profesor.getName() + " Email: " + profesor.getEmail());
+        }
     }
 
 }
