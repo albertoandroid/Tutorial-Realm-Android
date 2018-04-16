@@ -73,4 +73,20 @@ public class CRUDProfesor {
         }
     }
 
+    public final static void deleteProfesorById(int id){
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        Profesor profesor = realm.where(Profesor.class).equalTo("id", id).findFirst();
+        profesor.deleteFromRealm();
+        realm.commitTransaction();
+    }
+
+    public final static void deleteAllProfesor(){
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        RealmResults<Profesor> profesors = realm.where(Profesor.class).findAll();
+        realm.deleteAll();
+        realm.commitTransaction();
+    }
+
 }

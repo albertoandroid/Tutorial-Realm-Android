@@ -49,4 +49,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:text="Borrar por ID"
+            android:id="@+id/mainActivityBtDeleteById"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:text="Borrar Todo"
+            android:id="@+id/mainActivityBtDeleteAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
 </LinearLayout>

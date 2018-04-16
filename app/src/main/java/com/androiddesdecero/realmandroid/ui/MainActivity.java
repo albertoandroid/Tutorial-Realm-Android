@@ -15,7 +15,7 @@ import io.realm.Realm;
 public class MainActivity extends AppCompatActivity {
 
     private EditText nombreEt, emailEt;
-    private Button saveBt, leerTodoBt, leerByName, leerById, actualizarById;
+    private Button saveBt, leerTodoBt, leerByName, leerById, actualizarById, borrarPorId, borrarTodo;
     private Profesor profesor;
     private Realm realm;
 
@@ -66,6 +66,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 CRUDProfesor.updateProfesorById(1);
+            }
+        });
+
+        borrarPorId = findViewById(R.id.mainActivityBtDeleteById);
+        borrarPorId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CRUDProfesor.deleteProfesorById(1);
+            }
+        });
+
+
+
+        borrarTodo = findViewById(R.id.mainActivityBtDeleteAll);
+        borrarTodo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CRUDProfesor.deleteAllProfesor();
             }
         });
     }
